@@ -1,6 +1,6 @@
 # Arch-Packages
 
-My Arch Linux metapackages.
+My Arch Linux metapackages. A meta-package is a term for a specific type of package that actually contains no applications or files itself, but rather serves as an umbrella that encompasses a number of packages underneath it. This simplifies the installation of multiple packages by installing them all automatically when the meta-package is installed. It also serves to make the list of explicitly installed packages smaller.
 
 ## Adding Dependencies
 
