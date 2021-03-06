@@ -1,0 +1,6 @@
+cups-pdf:"PDF printer for cups"
+cups:"The CUPS Printing System - daemon package"
+ghostscript:"An interpreter for the PostScript language"
+gscan2pdf:"A GUI with OCR capability to produce PDFs or DjVus from scanned documents"
+gutenprint:"Top quality printer drivers for POSIX systems"
+system-config-printer:"A CUPS printer configuration tool and status applet"

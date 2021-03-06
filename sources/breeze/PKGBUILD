@@ -1,0 +1,16 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-breeze
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal breeze (theme) setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+groups=('desktop-pc')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "breeze.depends"))
+
+package() {
+    return 0
+}
+

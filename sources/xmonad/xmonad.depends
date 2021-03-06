@@ -1,0 +1,6 @@
+haskell-hashtables:"Mutable hash tables in the ST monad"
+trayer:"lightweight GTK2-based systray for UNIX desktop"
+xmobar:"Minimalistic Text Based Status Bar"
+xmonad-contrib:"Add-ons for xmonad"
+xmonad-utils:"Small collection of X utilities"
+xmonad:"Lightweight X11 tiled window manager written in Haskell"

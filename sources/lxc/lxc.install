@@ -1,0 +1,11 @@
+post_install() {
+    systemctl enable --now lxc.service
+    groupadd lxd
+    for user in $(ls /home) ; do
+        gpasswd -a $user lxd
+    done
+}
+
+post_upgrade() {
+    return 0
+}

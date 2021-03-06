@@ -1,0 +1,17 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-printer
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal printer setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+groups=('desktop-pc')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "printer.depends"))
+install=printer.install
+
+package() {
+    return 0
+}
+

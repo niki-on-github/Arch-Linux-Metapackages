@@ -1,0 +1,16 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-sway
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal sway setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "sway.depends"))
+depends+=( 'personal-wayland-wm' 'personal-wayland-wm-aur' )
+
+package() {
+    return 0
+}
+

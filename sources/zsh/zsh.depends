@@ -1,0 +1,3 @@
+fzf:"Command-line fuzzy finder"
+zsh-completions:"Additional completion definitions for Zsh"
+zsh:"A very advanced and programmable command interpreter (shell) for UNIX"

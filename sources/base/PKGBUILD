@@ -1,0 +1,17 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-base
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal system base packages"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+groups=('desktop-pc')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "base.depends"))
+install=base.install
+
+package() {
+    return 0
+}
+

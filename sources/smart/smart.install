@@ -1,0 +1,8 @@
+post_install() {
+    systemctl enable --now smartd.service
+    post_upgrade
+}
+
+post_upgrade() {
+    lsblk | grep disk | awk '{print $1}' | xargs -I {} smartctl --smart=on /dev/{}
+}

@@ -1,0 +1,15 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-cd2mp3
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal cd2mp3 setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "cd2mp3.depends"))
+
+package() {
+    return 0
+}
+

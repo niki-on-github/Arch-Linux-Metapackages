@@ -1,0 +1,13 @@
+post_install() {
+    LANG="de_DE.UTF-8"
+    KEYMAP="de-latin1"
+    X11_KEYMAP="de pc105"
+
+    localectl set-keymap $KEYMAP
+    localectl set-x11-keymap $X11_KEYMAP
+    localectl set-locale LANG=$LANG
+}
+
+post_upgrade() {
+    return 0
+}

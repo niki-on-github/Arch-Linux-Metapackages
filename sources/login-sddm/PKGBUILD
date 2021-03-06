@@ -1,0 +1,25 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-login-sddm
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal sddm display manager setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+groups=('desktop-pc')
+makedepends=( 'git' )
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "login-sddm.depends"))
+install=login-sddm.install
+source=('simple-login-sddm-theme::git+https://github.com/niki-on-github/simple-login-sddm-theme.git#branch=master')
+for i in $(seq 1 ${#source[@]}); do sha256sums+=(SKIP); done
+rootdir=$PWD
+
+package() {
+    mkdir -p "$pkgdir/usr/share/sddm/themes/simple-login"
+    # do not copy hidden files (.git directory, .gitignore file, ...)
+    cp -av "$srcdir/simple-login-sddm-theme/"* "$pkgdir/usr/share/sddm/themes/simple-login"
+    cp -av "$rootdir/files/"* "$pkgdir"
+    chmod 0755 -R "$pkgdir/etc"
+}
+

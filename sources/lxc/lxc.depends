@@ -1,0 +1,2 @@
+lxc:"Linux Containers"
+lxd:"Daemon based on liblxc offering a REST API to manage containers"

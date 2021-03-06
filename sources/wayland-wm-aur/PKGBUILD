@@ -1,0 +1,15 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-wayland-wm-aur
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal wayland WM setup (AUR)"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+depends=( 'personal-base-wm' )
+install=wayland-wm-aur.install
+
+package() {
+    return 0
+}
+

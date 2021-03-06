@@ -1,0 +1,7 @@
+post_install() {
+    systemctl enable --now org.cups.cupsd
+}
+
+post_upgrade() {
+    return 0
+}

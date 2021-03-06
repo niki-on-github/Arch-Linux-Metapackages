@@ -1,0 +1,16 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-nextcloud-client
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal nextcloud client setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+groups=('desktop-pc')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "nextcloud-client.depends"))
+
+package() {
+    return 0
+}
+

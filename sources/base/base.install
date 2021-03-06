@@ -1,0 +1,16 @@
+post_install() {
+    systemctl enable --now haveged.service
+    systemctl enable --now NetworkManager.service
+    systemctl enable --now rngd.service
+    echo "initialite git lfs for all users ..."
+    for user in $(ls /home) ; do
+        sudo -u $user git lfs install >/dev/null 2>&1
+    done
+   pip install pynvim
+}
+
+post_upgrade() {
+    reflector --country "Germany" -l 30 --sort rate --save /etc/pacman.d/mirrorlist
+    updatedb
+    pip install --upgrade pynvim
+}

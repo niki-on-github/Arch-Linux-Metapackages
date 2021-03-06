@@ -1,0 +1,4 @@
+grim:"Screenshot utility for Wayland"
+libappindicator-gtk3:"Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)"
+mako:"Lightweight notification daemon for Wayland"
+slurp:"Select a region in a Wayland compositor"

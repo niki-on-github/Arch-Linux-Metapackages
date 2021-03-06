@@ -1,0 +1,34 @@
+closeHook() {
+    sed -i '$ d' /etc/sudoers # remove last entry
+    echo "remove NOPASSWD from /etc/sudoers"
+}
+
+install_aur_packages() {
+    user=$(ls /home | head -n 1)
+    [ -z "$user" ] && return
+    echo "add NOPASSWD to /etc/sudoers"
+    echo "$user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+    trap closeHook SIGHUP SIGINT SIGTERM EXIT
+    mv -vf /var/lib/pacman/db.lck /var/lib/pacman/db.lck.unlock
+    # su $user -c 'yay --noconfirm --needed -S backintime' # Simple backup system. QT5 GUI version
+    su $user -c 'yay --noconfirm --needed -S brave-bin' # Web browser that blocks ads and trackers by default
+    # su $user -c 'yay --noconfirm --needed -S slack-desktop' # Slack Desktop (Beta) for Linux
+    su $user -c 'yay --noconfirm --needed -S spotify-adblock-git' # Adblocker for Spotify
+    su $user -c 'yay --noconfirm --needed -S visual-studio-code-bin' # Visual Studio Code Editor
+    mv -vf /var/lib/pacman/db.lck.unlock /var/lib/pacman/db.lck
+}
+
+pre_install() {
+    install_aur_packages
+}
+
+post_install() {
+    for user in $(ls /home) ; do
+        cp -rTuv /etc/skel/.config /home/$user/.config
+        chown -R $user:users /home/$user/.config
+    done
+}
+
+post_upgrade() {
+    return 0
+}

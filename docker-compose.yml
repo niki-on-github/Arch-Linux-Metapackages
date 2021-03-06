@@ -1,0 +1,11 @@
+version: '3.6'
+
+services:
+  arch-repository:
+    build: ./webserver
+    container_name: arch_repository
+    restart: unless-stopped
+    ports:
+      - 8010:80
+    volumes:
+      - ./packages:/web/www

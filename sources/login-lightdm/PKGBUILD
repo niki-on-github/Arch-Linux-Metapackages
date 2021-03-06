@@ -1,0 +1,16 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-login-lightdm
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal lightdm display manager setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "login-lightdm.depends"))
+install=login-lightdm.install
+
+package() {
+    return 0
+}
+

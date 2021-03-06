@@ -1,0 +1,9 @@
+post_install() {
+    groupadd wireshark
+    for user in $(ls /home) ; do
+        gpasswd -a $user wireshark
+    done
+}
+
+post_upgrade() {
+}

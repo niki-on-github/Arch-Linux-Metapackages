@@ -1,0 +1,10 @@
+post_install() {
+    systemctl enable --now acpid.service
+    systemctl enable --now atd
+    systemctl enable --now cronie.service
+    pip install git+https://github.com/will8211/unimatrix.git
+}
+
+post_upgrade() {
+    return 0
+}

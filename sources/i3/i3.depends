@@ -1,0 +1,4 @@
+i3-gaps:"A fork of i3wm tiling window manager with more features, including gaps"
+perl-anyevent-i3:"Library to communicate with the i3 window manager"
+python-pip:"The PyPA recommended tool for installing Python packages"
+python:"Next generation of the python high-level scripting language"

@@ -1,0 +1,19 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-i3
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal i3 setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "i3.depends"))
+depends+=( 'personal-xorg-wm' 'personal-xorg-wm-aur' )
+install=i3.install
+conflicts=( 'i3' )
+replaces=( 'i3' )
+
+package() {
+    return 0
+}
+

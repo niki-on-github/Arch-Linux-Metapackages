@@ -1,0 +1,12 @@
+post_install() {
+    groupadd vboxusers
+    groupadd vboxsf
+    for user in $(ls /home) ; do
+        gpasswd -a $user vboxusers
+        gpasswd -a $user vboxsf
+    done
+}
+
+post_upgrade() {
+    return 0
+}

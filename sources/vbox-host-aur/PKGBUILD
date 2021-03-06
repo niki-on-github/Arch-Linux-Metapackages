@@ -1,0 +1,15 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-vbox-host-aur
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal VirtualBox host setup (AUR)"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+groups=('desktop-pc')
+install=vbox-host-aur.install
+
+package() {
+    return 0
+}
+

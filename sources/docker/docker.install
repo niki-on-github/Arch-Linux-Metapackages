@@ -1,0 +1,12 @@
+post_install() {
+    systemctl enable --now docker.service
+    systemctl enable --now docker
+    groupadd docker
+    for user in $(ls /home) ; do
+        usermod -aG docker $user
+    done
+}
+
+post_upgrade() {
+    return 0
+}

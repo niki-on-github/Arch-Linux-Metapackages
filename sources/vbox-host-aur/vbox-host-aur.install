@@ -1,0 +1,27 @@
+closeHook() {
+    sed -i '$ d' /etc/sudoers # remove last entry
+    echo "remove NOPASSWD from /etc/sudoers"
+}
+
+install_aur_packages() {
+    user=$(ls /home | head -n 1)
+    [ -z "$user" ] && return
+    echo "add NOPASSWD to /etc/sudoers"
+    echo "$user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+    trap closeHook SIGHUP SIGINT SIGTERM EXIT
+    mv -vf /var/lib/pacman/db.lck /var/lib/pacman/db.lck.unlock
+    su $user -c 'yay --noconfirm --needed -S virtualbox-ext-oracle' # Oracle VM VirtualBox Extension Pack
+    mv -vf /var/lib/pacman/db.lck.unlock /var/lib/pacman/db.lck
+}
+
+pre_install() {
+    install_aur_packages
+}
+
+post_install() {
+    return 0
+}
+
+post_upgrade() {
+    return 0
+}

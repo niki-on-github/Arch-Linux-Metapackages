@@ -1,0 +1,20 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-xmonad
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal Xmonad WM + Xmobar setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+groups=('desktop-pc')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "xmonad.depends"))
+depends+=( 'personal-xorg' 'personal-xorg-wm' 'personal-xorg-wm-aur' )
+rootdir=$PWD
+
+# $pkgdir is a fakeroot environment witch replicates the hierarchy of the root file system.
+package() {
+    cp -av "$rootdir/files/"* "$pkgdir"
+    chmod -R 0755 "$pkgdir/etc/pacman.d"
+}
+

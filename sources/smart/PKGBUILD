@@ -1,0 +1,17 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-smart
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal S.M.A.R.T service setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+groups=('desktop-pc')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "smart.depends"))
+install=smart.install
+
+package() {
+    return 0
+}
+

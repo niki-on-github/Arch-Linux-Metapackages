@@ -1,0 +1,6 @@
+{
+  "terminal.integrated.fontFamily": "Hack",
+  "editor.fontFamily": "Hack",
+  "editor.fontSize": 15,
+  "terminal.integrated.inheritEnv": false
+}

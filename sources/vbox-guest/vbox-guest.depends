@@ -1,0 +1,2 @@
+virtualbox-guest-dkms:"VirtualBox Guest kernel modules sources"
+virtualbox-guest-utils:"VirtualBox Guest userspace utilities"

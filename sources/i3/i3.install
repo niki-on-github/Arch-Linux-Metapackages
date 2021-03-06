@@ -1,0 +1,9 @@
+post_install() {
+    pip install i3py
+    pip install i3ipc
+}
+
+post_upgrade() {
+    pip install --upgrade i3py
+    pip install --upgrade i3ipc
+}

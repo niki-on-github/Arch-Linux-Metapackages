@@ -1,0 +1,17 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-apps-aur
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal applications setup (AUR)"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+groups=('desktop-pc')
+install=apps-aur.install
+rootdir=$PWD
+
+package() {
+    cp -av "$rootdir/files/"* "$pkgdir"
+    chmod -R 0755 "$pkgdir/etc/skel/.config/Code"
+}
+

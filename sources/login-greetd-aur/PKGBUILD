@@ -1,0 +1,14 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-login-greetd-aur
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal base WM setup (AUR)"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+install=login-greetd-aur.install
+
+package() {
+    return 0
+}
+

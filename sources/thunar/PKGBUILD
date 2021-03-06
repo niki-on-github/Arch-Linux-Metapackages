@@ -1,0 +1,15 @@
+# Maintainer: arch <arch[at]local>
+pkgname=personal-thunar
+pkgver=0.0.1
+pkgrel=1 # release of this package version
+pkgdesc="Personal thunar setup"
+url="http://gitea.local:3000/root/Arch-Packages"
+arch=('any')
+license=('MIT')
+source ../resolve_dependencies.sh
+depends=($(resolve_dependencies "thunar.depends"))
+
+package() {
+    return 0
+}
+

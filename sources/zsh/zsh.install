@@ -1,0 +1,10 @@
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+    # set zsh as my default shell
+    for user in $(ls /home) ; do
+        usermod -s /usr/bin/zsh $user
+    done
+}

@@ -1,0 +1,7 @@
+post_install() {
+    systemctl enable -f lightdm
+}
+
+post_upgrade() {
+    return 0
+}
