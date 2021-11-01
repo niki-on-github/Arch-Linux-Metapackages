@@ -6,7 +6,7 @@ pkgdesc="Personal Xmonad WM + Xmobar setup"
 url="http://gitea.local:3000/root/Arch-Packages"
 arch=('any')
 license=('MIT')
-groups=('desktop-pc')
+groups=()
 source ../resolve_dependencies.sh
 depends=($(resolve_dependencies "xmonad.depends"))
 depends+=( 'personal-xorg' 'personal-xorg-wm' 'personal-xorg-wm-aur' )
