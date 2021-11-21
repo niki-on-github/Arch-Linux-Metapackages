@@ -1,15 +1,15 @@
 # Maintainer: arch <arch[at]local>
-pkgname=personal-smart
+pkgname=personal-flatpak
 pkgver=0.0.1
 pkgrel=1 # release of this package version
-pkgdesc="Personal S.M.A.R.T service setup"
+pkgdesc="Personal flatpak setup"
 url="http://gitea.local:3000/r/arch-packages"
 arch=('any')
 license=('MIT')
 groups=('desktop-pc')
 source ../resolve_dependencies.sh
-depends=($(resolve_dependencies "smart.depends"))
-install=smart.install
+depends=($(resolve_dependencies "flatpak.depends"))
+install=flatpak.install
 
 package() {
     return 0

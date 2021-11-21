@@ -15,14 +15,6 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-# run not on Arch Linux host?
-if ! grep -q "^NAME=\"Arch Linux\"" /etc/*-release || [ "$1" = "--docker" ] ; then
-    echo -e "This is not an Arch Linux host, We use docker to build the packages"
-    echo -e "${RED}[WARNING] Build packages inside arch linux docker is currently broken on "\$hosts" != "archlinux". Related to https://bugs.archlinux.org/task/69563 ${NC}"
-    docker pull archlinux:base-devel # pull latest image required to install build dependencies inside docker
-    docker run --rm -it -v $PWD:/mnt archlinux:base-devel bash /mnt/build.sh
-    exit
-fi
 
 # run inside docker?
 if [ -f /.dockerenv ]; then
@@ -36,6 +28,15 @@ if [ -f /.dockerenv ]; then
         chown -R builduser: $root_dir/$repo_dir
         chmod -R 775 $root_dir/$repo_dir
         su builduser -c "bash $0"
+        exit
+    fi
+else
+    # run not on Arch Linux host?
+    if ! grep -q "^NAME=\"Arch Linux\"" /etc/*-release || [ "$1" = "--docker" ] ; then
+        echo -e "This is not an Arch Linux host, We use docker to build the packages"
+        echo -e "${RED}[WARNING] Build packages inside arch linux docker is currently broken on "\$hosts" != "archlinux". Related to https://bugs.archlinux.org/task/69563 ${NC}"
+        docker pull archlinux:base-devel # pull latest image required to install build dependencies inside docker
+        docker run --rm -it -v $PWD:/mnt archlinux:base-devel bash /mnt/build.sh
         exit
     fi
 fi
@@ -66,6 +67,8 @@ done
 
 if [ "${#failed[@]}" -ne "0" ]; then
     echo -e "\n${RED}Build failed: ${failed[@]} ${NC}"
+    exit 1
 else
     echo -e "\n${GREEN}All packages were successfully build ${NC}"
+    exit 0
 fi

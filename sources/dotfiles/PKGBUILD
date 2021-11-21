@@ -1,15 +1,14 @@
 # Maintainer: arch <arch[at]local>
-pkgname=personal-smart
+pkgname=personal-dotfiles
 pkgver=0.0.1
 pkgrel=1 # release of this package version
-pkgdesc="Personal S.M.A.R.T service setup"
+pkgdesc="Personal dotfiles setup"
 url="http://gitea.local:3000/r/arch-packages"
 arch=('any')
 license=('MIT')
 groups=('desktop-pc')
 source ../resolve_dependencies.sh
-depends=($(resolve_dependencies "smart.depends"))
-install=smart.install
+install=dotfiles.install
 
 package() {
     return 0

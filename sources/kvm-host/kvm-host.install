@@ -4,10 +4,13 @@ post_install() {
     sed -i 's/^#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/g' /etc/libvirt/libvirtd.conf
     groupadd libvirt
     groupadd kvm
-    for user in $(ls /home) ; do
+    user=$(ls /home | head -n1)
+    if [ -n "$user" ]; then
+        echo "Setup KVM for $user"
         usermod -aG libvirt $user
         usermod -aG kvm $user
-    done
+        sed -i 's/^#user=.*/user="'$user'"/g' /etc/libvirt/qemu.conf
+    fi
 }
 
 post_upgrade() {

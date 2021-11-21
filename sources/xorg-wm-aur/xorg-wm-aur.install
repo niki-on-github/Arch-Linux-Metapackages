@@ -1,4 +1,5 @@
 closeHook() {
+    mv -vf /var/lib/pacman/db.lck.unlock /var/lib/pacman/db.lck
     sed -i '$ d' /etc/sudoers # remove last entry
     echo "remove NOPASSWD from /etc/sudoers"
 }
@@ -8,15 +9,25 @@ install_aur_packages() {
     [ -z "$user" ] && return
     echo "add NOPASSWD to /etc/sudoers"
     echo "$user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-    trap closeHook SIGHUP SIGINT SIGTERM EXIT
     mv -vf /var/lib/pacman/db.lck /var/lib/pacman/db.lck.unlock
-    su $user -c 'yay --noconfirm --needed -S dragon-drag-and-drop' # Simple drag-and-drop source/sink for X
-    su $user -c 'yay --noconfirm --needed -S i3lock-color' # Improved screenlocker with color configuration support
-    su $user -c 'yay --noconfirm --needed -S picom-jonaburg-git' # picom fork with dual_kawase blur and rounded corners
-    su $user -c 'yay --noconfirm --needed -S xcolor' # display and grab colors in X
-    su $user -c 'yay --noconfirm --needed -S xidlehook' # xautolock rewrite in Rust, with a few extra features
-    su $user -c 'yay --noconfirm --needed -S xob' # A lightweight volume (or anything) bar for the X Window System"
-    mv -vf /var/lib/pacman/db.lck.unlock /var/lib/pacman/db.lck
+    trap closeHook SIGHUP SIGINT SIGTERM EXIT
+    AUR_HELPER=""
+    if command -v yay >/dev/null ; then
+        AUR_HELPER="yay"
+    elif command -v paru >/dev/null ; then
+        AUR_HELPER="paru"
+    fi
+    if [ -z "$AUR_HELPER" ]; then
+        echo "ERROR: No AUR helper found!"
+        exit 1
+    else
+        su $user -c "$AUR_HELPER --noconfirm --needed -S dragon-drag-and-drop" # Simple drag-and-drop source/sink for X
+        su $user -c "$AUR_HELPER --noconfirm --needed -S i3lock-color" # Improved screenlocker with color configuration support
+        su $user -c "$AUR_HELPER --noconfirm --needed -S picom-jonaburg-git" # picom fork with dual_kawase blur and rounded corners
+        su $user -c "$AUR_HELPER --noconfirm --needed -S xcolor" # display and grab colors in X
+        su $user -c "$AUR_HELPER --noconfirm --needed -S xidlehook" # xautolock rewrite in Rust, with a few extra features
+        su $user -c "$AUR_HELPER --noconfirm --needed -S xob" # A lightweight volume (or anything) bar for the X Window System"
+    fi
 }
 
 pre_install() {

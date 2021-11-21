@@ -1,0 +1,2 @@
+flatpak:"Linux application sandboxing and distribution framework (formerly xdg-app)"
+flatpak-builder:"Tool to build flatpaks from source"

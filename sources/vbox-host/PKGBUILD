@@ -3,10 +3,10 @@ pkgname=personal-vbox-host
 pkgver=0.0.1
 pkgrel=1 # release of this package version
 pkgdesc="Personal VirtualBox host setup"
-url="http://gitea.local:3000/root/Arch-Packages"
+url="http://gitea.local:3000/r/arch-packages"
 arch=('any')
 license=('MIT')
-groups=('desktop-pc')
+groups=()
 source ../resolve_dependencies.sh
 depends=($(resolve_dependencies "vbox-host.depends"))
 depends+=( 'personal-base' )

@@ -1,0 +1,7 @@
+post_install() {
+    return 0
+}
+
+post_upgrade() {
+    return 0
+}

@@ -1,4 +1,5 @@
 closeHook() {
+    mv -vf /var/lib/pacman/db.lck.unlock /var/lib/pacman/db.lck
     sed -i '$ d' /etc/sudoers # remove last entry
     echo "remove NOPASSWD from /etc/sudoers"
 }
@@ -8,10 +9,20 @@ install_aur_packages() {
     [ -z "$user" ] && return
     echo "add NOPASSWD to /etc/sudoers"
     echo "$user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-    trap closeHook SIGHUP SIGINT SIGTERM EXIT
     mv -vf /var/lib/pacman/db.lck /var/lib/pacman/db.lck.unlock
-    su $user -c 'yay --noconfirm --needed -S virtualbox-ext-oracle' # Oracle VM VirtualBox Extension Pack
-    mv -vf /var/lib/pacman/db.lck.unlock /var/lib/pacman/db.lck
+    trap closeHook SIGHUP SIGINT SIGTERM EXIT
+    AUR_HELPER=""
+    if command -v yay >/dev/null ; then
+        AUR_HELPER="yay"
+    elif command -v paru >/dev/null ; then
+        AUR_HELPER="paru"
+    fi
+    if [ -z "$AUR_HELPER" ]; then
+        echo "ERROR: No AUR helper found!"
+        exit 1
+    else
+        su $user -c "$AUR_HELPER --noconfirm --needed -S virtualbox-ext-oracle" # Oracle VM VirtualBox Extension Pack
+    fi
 }
 
 pre_install() {

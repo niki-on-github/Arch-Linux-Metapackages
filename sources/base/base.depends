@@ -49,7 +49,7 @@ reflector:"A Python 3 module and script to retrieve and filter the latest Pacman
 rng-tools:"Random number generator related utilities"
 rsync:"A file transfer program to keep remote files in sync"
 ruby:"An object-oriented language for quick and easy programming"
-rust:"Systems programming language focused on safety, speed and concurrency"
+rustup:"The Rust toolchain installer"
 sshfs:"FUSE client based on the SSH File Transfer Protocol"
 sudo:"Give certain users the ability to run some commands as root"
 tar:"Utility used to store, backup, and transport files"

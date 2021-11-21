@@ -1,0 +1,44 @@
+pre_install() {
+    return 0
+}
+
+post_install() {
+    DOTFILES_REPO="http://gitea.local:3000/r/dotfiles.git"
+    for user in $(ls /home) ; do
+        sudo -u $user git lfs install >/dev/null 2>&1 || echo "initialize git lfs"
+        sudo usermod -s /usr/bin/zsh $user
+        if [ -d /home/$user/.dotfiles ]; then
+            echo "dotfiles already installed for user $user"
+        else
+            sudo -u $user git clone --recursive --recurse-submodules --remote --bare $DOTFILES_REPO /home/$user/.dotfiles
+            sudo -u $user git --git-dir=/home/$user/.dotfiles --work-tree=/home/$user checkout -f master
+            sudo -u $user git --git-dir=/home/$user/.dotfiles --work-tree=/home/$user submodules init
+            sudo -u $user git --git-dir=/home/$user/.dotfiles --work-tree=/home/$user submodules update
+            sudo -u $user git --git-dir=/home/$user/.dotfiles --work-tree=/home/$user config --local status.showUntrackedFiles no
+
+            if [ -d /home/$user/.config/dmenu/src ]; then
+                pushd "/home/$user/.config/dmenu/src"
+                make install
+                popd
+            fi
+
+            if [ -d /home/$user/.config/dwm/src ]; then
+                pushd "/home/$user/.config/dwm/src"
+                make install
+                popd
+            fi
+
+            if [ -f /home/$user/.config/xmonad/install.sh ]; then
+                pushd "/home/$user/.config/xmonad"
+                sudo -u $user ./install.sh
+                popd
+            fi
+
+            echo "relogin or reboot required to apply dotfiles"
+        fi
+    done
+}
+
+post_upgrade() {
+    return 0
+}
