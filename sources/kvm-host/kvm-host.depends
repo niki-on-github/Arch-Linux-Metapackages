@@ -1,6 +1,7 @@
 bridge-utils:"Utilities for configuring the Linux ethernet bridge"
 dnsmasq:"Lightweight, easy to configure DNS forwarder and DHCP server"
 ebtables:"Ethernet bridge filtering utilities"
+gnu-netcat:"GNU rewrite of netcat, the network piping application"
 libvirt:"API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 ovmf:"Tianocore UEFI firmware for qemu"
 qemu:"A generic and open source machine emulator and virtualizer"
