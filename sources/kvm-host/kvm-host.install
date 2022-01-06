@@ -9,7 +9,7 @@ post_install() {
         echo "Setup KVM for $user"
         usermod -aG libvirt $user
         usermod -aG kvm $user
-        sed -i 's/^#user=.*/user="'$user'"/g' /etc/libvirt/qemu.conf
+        sed -i 's/^#user =.*/user = "'$user'"/g' /etc/libvirt/qemu.conf
     fi
 }
 
