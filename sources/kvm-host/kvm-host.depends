@@ -1,6 +1,7 @@
 bridge-utils:"Utilities for configuring the Linux ethernet bridge"
 cockpit-machines:"Cockpit UI for virtual machines"
 cockpit-pcp:"Cockpit support for reading PCP metrics and loading PCP archives"
+cockpit-podman:"Cockpit UI for podman containers"
 cockpit:"A systemd web based user interface for Linux servers"
 dnsmasq:"Lightweight, easy to configure DNS forwarder and DHCP server"
 ebtables:"Ethernet bridge filtering utilities"
