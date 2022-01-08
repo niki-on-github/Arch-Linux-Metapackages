@@ -1,5 +1,8 @@
 post_install() {
     systemctl enable --now libvirtd.service
+    systemctl enable --now cockpit.socket
+    systemctl enable --now pmcd.service
+    systemctl enable --now pmlogger.service
     sed -i 's/^#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/g' /etc/libvirt/libvirtd.conf
     sed -i 's/^#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/g' /etc/libvirt/libvirtd.conf
     sed -i 's/#spice_listen =.*/spice_listen = "::1"/g' /etc/libvirt/qemu.conf
