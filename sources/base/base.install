@@ -10,7 +10,7 @@ post_install() {
 }
 
 post_upgrade() {
-    reflector --country "Germany" -l 30 --sort rate --save /etc/pacman.d/mirrorlist
+    reflector --country "Germany" --age 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
     updatedb
     pip install --upgrade pynvim
 }
